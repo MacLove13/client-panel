@@ -44,7 +44,8 @@ A aplicação estará disponível em `http://localhost:3000`.
 |----------|-----------|--------|
 | `DATABASE_USERNAME` | Usuário do PostgreSQL | `client_panel` |
 | `DATABASE_PASSWORD` | Senha do PostgreSQL | `client_panel_secret` |
-| `DATABASE_NAME` | Nome do banco de dados | `client_panel` |
+| `DATABASE_NAME` | Nome do banco de dados | `client_panel_production` |
+| `DATABASE_HOST` | Host do PostgreSQL | `db` (no docker-compose) |
 | `SECRET_KEY_BASE` | Chave secreta do Rails | - |
 | `RAILS_MASTER_KEY` | Chave mestra do Rails | - |
 | `PORT` | Porta da aplicação | `3000` |

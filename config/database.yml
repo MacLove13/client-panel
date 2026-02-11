@@ -16,7 +16,7 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME") { "client_panel" } %>
+  database: <%= ENV.fetch("DATABASE_NAME") { "client_panel_production" } %>
   username: <%= ENV.fetch("DATABASE_USERNAME") { "client_panel" } %>
   password: <%= ENV.fetch("DATABASE_PASSWORD") { "" } %>
-  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
+  host: <%= ENV.fetch("DATABASE_HOST") { "db" } %>
