@@ -44,13 +44,11 @@ A aplicação estará disponível em `http://localhost:3000`.
 |----------|-----------|--------|
 | `DATABASE_USERNAME` | Usuário do PostgreSQL | `client_panel` |
 | `DATABASE_PASSWORD` | Senha do PostgreSQL | `client_panel_secret` |
-| `DATABASE_NAME` | Nome do banco de dados | `client_panel_production` |
+| `DATABASE_NAME` | Nome do banco de dados | `client_panel` |
 | `SECRET_KEY_BASE` | Chave secreta do Rails | - |
 | `RAILS_MASTER_KEY` | Chave mestra do Rails | - |
 | `PORT` | Porta da aplicação | `3000` |
 
 ### Deploy no Coolify
 
-1. Conecte o repositório no Coolify
-2. Configure as variáveis de ambiente necessárias
-3. O Coolify irá detectar o `docker-compose.yaml` automaticamente
+Para instruções detalhadas sobre como configurar o deploy no Coolify, consulte o arquivo [COOLIFY_SETUP.md](COOLIFY_SETUP.md).
