@@ -61,17 +61,24 @@ Rails.application.configure do
   # Specify outgoing SMTP server via environment variables.
   if ENV["SMTP_ADDRESS"].present?
     config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
+
+    smtp_settings = {
       address: ENV.fetch("SMTP_ADDRESS"),
       port: ENV.fetch("SMTP_PORT", 587).to_i,
       domain: ENV.fetch("SMTP_DOMAIN", "prifresh.com.br"),
-      user_name: ENV.fetch("SMTP_USERNAME"),
-      password: ENV.fetch("SMTP_PASSWORD"),
-      authentication: ENV.fetch("SMTP_AUTHENTICATION", "plain").to_sym,
       enable_starttls_auto: ENV.fetch("SMTP_ENABLE_STARTTLS", "true") == "true",
       open_timeout: 5,
       read_timeout: 5
     }
+
+    auth = ENV.fetch("SMTP_AUTHENTICATION", "plain")
+    if auth != "none"
+      smtp_settings[:authentication] = auth.to_sym
+      smtp_settings[:user_name] = ENV.fetch("SMTP_USERNAME")
+      smtp_settings[:password] = ENV.fetch("SMTP_PASSWORD")
+    end
+
+    config.action_mailer.smtp_settings = smtp_settings
   end
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
