@@ -4,9 +4,19 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  # Dashboard
+  get "dashboard", to: "dashboard#index", as: :dashboard
+
   # Profile
   get "profile/edit", to: "profiles#edit", as: :edit_profile
   patch "profile", to: "profiles#update", as: :profile
+
+  # Force password change
+  get "password/change", to: "password_changes#edit", as: :force_password_change
+  patch "password/change", to: "password_changes#update"
+
+  # User management (admin only)
+  resources :users, only: [ :index, :new, :create ]
 
   # Root
   root "sessions#new"
