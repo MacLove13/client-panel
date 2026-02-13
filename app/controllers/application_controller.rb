@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :require_login
   before_action :require_password_change
 
-  helper_method :current_user, :logged_in?, :admin?
+  helper_method :current_user, :logged_in?, :admin?, :current_organization
 
   private
 
@@ -36,6 +36,16 @@ class ApplicationController < ActionController::Base
   def require_admin
     unless admin?
       redirect_to dashboard_path, alert: "Acesso restrito a administradores."
+    end
+  end
+
+  def current_organization
+    @current_organization ||= current_user&.selected_organization
+  end
+
+  def require_selected_organization
+    unless current_organization
+      redirect_to dashboard_path, alert: "Você precisa selecionar uma organização."
     end
   end
 
