@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   # User management (admin only)
   resources :users, only: [ :index, :new, :create ]
 
+  # Clients
+  resources :clients, only: [ :index, :new, :create, :edit, :update ]
+
   # Root
   root "sessions#new"
 

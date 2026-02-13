@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :organization_users, dependent: :destroy
+  has_many :organizations, through: :organization_users
+  belongs_to :selected_organization, class_name: "Organization", optional: true
+
   validates :username, presence: true, uniqueness: true
   validate :password_complexity, if: -> { password.present? }
 

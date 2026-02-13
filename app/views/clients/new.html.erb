@@ -1,0 +1,27 @@
+<div class="min-h-screen bg-gray-100">
+  <%= render "shared/topbar" %>
+
+  <div class="flex">
+    <%= render "shared/sidebar" %>
+
+    <main class="flex-1 p-6">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white shadow-lg rounded-lg p-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">Novo Cliente</h2>
+
+          <% if @client.errors.any? %>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              <ul class="list-disc pl-5">
+                <% @client.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <%= render "form" %>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
